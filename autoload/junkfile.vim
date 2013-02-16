@@ -29,28 +29,26 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! junkfile#open(prefix) "{{{
-  let junk_dir = g:junkfile#directory . strftime('/%Y/%m/')
-  if !isdirectory(junk_dir)
-    call mkdir(junk_dir, 'p')
-  endif
-
-  let filename = input('Junk Code: ', junk_dir . a:prefix)
+  let filename = input('Junk Code: ', a:prefix)
 
   if filename != ''
-    execute g:junkfile#edit_command fnameescape(filename)
+    call junkfile#_open(filename)
   endif
 endfunction"}}}
 
-function! junkfile#open_immediately(prefix) "{{{
-  let junk_dir = g:junkfile#directory . strftime('/%Y/%m/')
+function! junkfile#open_immediately(filename) "{{{
+  call junkfile#_open(a:filename)
+endfunction"}}}
+
+function! junkfile#_open(filename)
+  let filename = g:junkfile#directory . strftime('/%Y/%m/') . a:filename
+  let junk_dir = fnamemodify(filename, ':h')
   if !isdirectory(junk_dir)
     call mkdir(junk_dir, 'p')
   endif
 
-  let filename = junk_dir . a:prefix
-
   execute g:junkfile#edit_command fnameescape(filename)
-endfunction"}}}
+endfunction
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
