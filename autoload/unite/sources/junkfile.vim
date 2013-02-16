@@ -61,13 +61,14 @@ function! s:source_junkfile_new.change_candidates(args, context) "{{{
   endif
 
   let filename = unite#util#substitute_path_separator(
-        \ junk_dir . strftime('/%Y-%m-%d-%H%M.') . a:context.input)
+        \ junk_dir . strftime('/%Y-%m-%d-%H%M%S.') . a:context.input)
   if filereadable(filename)
     return []
   endif
 
   let _ = map([filename], "{
         \ 'word' : fnamemodify(v:val, ':t'),
+        \ 'abbr' : '[new file] ' . fnamemodify(v:val, ':t'),
         \ 'kind' : 'file',
         \ 'action__path' : v:val,
         \ }

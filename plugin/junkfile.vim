@@ -36,7 +36,7 @@ let g:junkfile#directory =
 let g:junkfile#edit_command =
       \ get(g:, 'junkfile#edit_command', 'edit')
 
-command! -nargs=0 JunkfileOpen call junkfile#open(strftime('%Y-%m-%d-%H%M.'))
+command! -nargs=0 JunkfileOpen call junkfile#open(strftime('%Y-%m-%d-%H%M%S.'))
 
 let g:loaded_junkfile = 1
 
