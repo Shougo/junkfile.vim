@@ -28,14 +28,14 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-function! junkfile#open() "{{{
-  let junk_dir = g:junkfile#directory . strftime('/%Y/%m')
+function! junkfile#open(prefix) "{{{
+  let junk_dir = g:junkfile#directory . strftime('/%Y/%m/')
   if !isdirectory(junk_dir)
     call mkdir(junk_dir, 'p')
   endif
 
-  let filename = input('Junk Code: ',
-        \ junk_dir . strftime('/%Y-%m-%d-%H%M.'))
+  let filename = input('Junk Code: ', junk_dir . a:prefix)
+
   if filename != ''
     execute g:junkfile#edit_command fnameescape(filename)
   endif
