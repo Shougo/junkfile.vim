@@ -41,6 +41,17 @@ function! junkfile#open(prefix) "{{{
   endif
 endfunction"}}}
 
+function! junkfile#open_immediately(prefix) "{{{
+  let junk_dir = g:junkfile#directory . strftime('/%Y/%m/')
+  if !isdirectory(junk_dir)
+    call mkdir(junk_dir, 'p')
+  endif
+
+  let filename = junk_dir . a:prefix
+
+  execute g:junkfile#edit_command fnameescape(filename)
+endfunction"}}}
+
 let &cpo = s:save_cpo
 unlet s:save_cpo
 

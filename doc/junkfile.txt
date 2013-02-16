@@ -57,6 +57,13 @@ INTERFACE					*junkfile-interface*
 ------------------------------------------------------------------------------
 FUNCTIONS 					*junkfile-functions*
 
+junkfile#open({prefix})				*junkfile#open()*
+		Open {prefix} junk file.
+
+junkfile#open_immediately({filename})		*junkfile#open_immediately()*
+		Open {filename} junk file immediately.
+		It is useful to edit memo or diary file.
+
 ------------------------------------------------------------------------------
 COMMANDS 					*junkfile-commands*
 
@@ -78,9 +85,12 @@ g:junkfile#edit_command				*g:junkfile#edit_command*
 
 ==============================================================================
 EXAMPLES					*junkfile-examples*
+
 >
->
->
+	command! -nargs=0 JunkfileDay call junkfile#open_immediately(
+	\ strftime('%Y-%m-%d.txt'))
+	command! -nargs=0 JunkfileDiary call junkfile#open_immediately(
+	\ strftime('%Y-%m-%d.md'))
 <
 ==============================================================================
 UNITE SOURCES					*junkfile-unite-sources*
@@ -102,6 +112,7 @@ CHANGELOG					*junkfile-changelog*
 
 2013-02-16
 - Initial version.
+- Added junkfile#open_immediately().
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:noet:fen:
