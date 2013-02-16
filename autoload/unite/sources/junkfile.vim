@@ -60,10 +60,16 @@ function! s:source_junkfile_new.change_candidates(args, context) "{{{
     call mkdir(junk_dir, 'p')
   endif
 
-  let _ = map([junk_dir . strftime('/%Y-%m-%d-%H%M.') . a:context.input], "{
+  let filename = unite#util#substitute_path_separator(
+        \ junk_dir . strftime('/%Y-%m-%d-%H%M.') . a:context.input)
+  if filereadable(filename)
+    return []
+  endif
+
+  let _ = map([filename], "{
         \ 'word' : fnamemodify(v:val, ':t'),
         \ 'kind' : 'file',
-        \ 'action__path' : unite#util#substitute_path_separator(v:val),
+        \ 'action__path' : v:val,
         \ }
         \")
 
