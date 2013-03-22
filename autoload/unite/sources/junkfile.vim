@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: junkfile.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 16 Feb 2013.
+" Last Modified: 23 Mar 2013.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -35,6 +35,7 @@ let s:source_junkfile = {
       \ 'name' : 'junkfile',
       \ 'description' : 'candidates from junkfiles',
       \ 'max_candidates' : 30,
+      \ 'action_table' : {},
       \ }
 
 function! s:source_junkfile.gather_candidates(args, context) "{{{
@@ -46,7 +47,7 @@ function! s:source_junkfile.gather_candidates(args, context) "{{{
         \ }
         \")
 
-  return reverse(_)
+  return reverse(unite#util#sort_by(_, 'getftime(v:val.action__path)'))
 endfunction"}}}
 
 let s:source_junkfile_new = {
@@ -76,6 +77,20 @@ function! s:source_junkfile_new.change_candidates(args, context) "{{{
 
   return _
 endfunction"}}}
+
+let s:source_junkfile.action_table.delete = {
+      \ 'description' : 'delete files',
+      \ 'is_quit' : 0,
+      \ 'is_invalidate_cache' : 1,
+      \ 'is_selectable' : 1,
+      \}
+function! s:source_junkfile.action_table.delete.func(candidates)
+  if unite#util#input_yesno('Really force delete files?')
+    for candidate in a:candidates
+      call delete(candidate.action__path)
+    endfor
+  endif
+endfunction
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

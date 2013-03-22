@@ -107,8 +107,16 @@ junkfile/new
 >
 		:Unite -start-insert junkfile/new junk/file
 <
+Actions of each sources
+junkfile				*unite-action-source-junkfile*
+	delete		Delete junk files
+
 ==============================================================================
 CHANGELOG					*junkfile-changelog*
+
+2013-03-23
+- Added delete action.
+- Improved sort.
 
 2013-02-16
 - Initial version.
