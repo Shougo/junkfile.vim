@@ -37,8 +37,8 @@ Changelog		|junkfile-changelog|
 ==============================================================================
 INTRODUCTION					*junkfile-introduction*
 
-*junkfile* is creates junk files. Instead of other scratch plugins, it
-can create files with filetype.
+*junkfile* creates junk files. Instead of other scratch plugins, it can create
+files with filetype.
 
 ==============================================================================
 USAGE						*junkfile-usage*
