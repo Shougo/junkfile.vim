@@ -31,11 +31,6 @@ endif
 let s:save_cpo = &cpo
 set cpo&vim
 
-let g:junkfile#directory =
-      \ get(g:, 'junkfile#directory', $HOME . '/.vim_junk')
-let g:junkfile#edit_command =
-      \ get(g:, 'junkfile#edit_command', 'edit')
-
 command! -nargs=0 JunkfileOpen call junkfile#open(strftime('%Y-%m-%d-%H%M%S.'))
 
 let g:loaded_junkfile = 1

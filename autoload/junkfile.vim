@@ -28,6 +28,11 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
+let g:junkfile#directory =
+      \ get(g:, 'junkfile#directory', $HOME . '/.vim_junk')
+let g:junkfile#edit_command =
+      \ get(g:, 'junkfile#edit_command', 'edit')
+
 function! junkfile#open(prefix) "{{{
   let filename = input('Junk Code: ', a:prefix)
 
