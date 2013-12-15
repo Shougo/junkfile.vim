@@ -1,4 +1,4 @@
-junkfile.txt*	Create temporary file
+*junkfile.txt*	Create temporary file
 
 Version: 1.0
 Author : Shougo <Shougo.Matsu at gmail.com>
