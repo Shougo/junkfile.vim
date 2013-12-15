@@ -47,7 +47,7 @@ function! s:source_junkfile.gather_candidates(args, context) "{{{
         \ }
         \")
 
-  return reverse(unite#util#sort_by(_, 'getftime(v:val.action__path)'))
+  return unite#util#sort_by(_, '-getftime(v:val.action__path)')
 endfunction"}}}
 
 let s:source_junkfile_new = {
