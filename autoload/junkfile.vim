@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: junkfile.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu at gmail.com>
-" Last Modified: 16 Feb 2013.
+" Last Modified: 18 Dec 2013.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -33,8 +33,10 @@ let g:junkfile#directory =
 let g:junkfile#edit_command =
       \ get(g:, 'junkfile#edit_command', 'edit')
 
-function! junkfile#open(prefix) "{{{
-  let filename = input('Junk Code: ', a:prefix)
+function! junkfile#open(prefix, ...) "{{{
+  let postfix = get(a:000, 0, '')
+  let filename = postfix == '' ?
+        \ input('Junk Code: ', a:prefix) : a:prefix . postfix
 
   if filename != ''
     call junkfile#_open(filename)

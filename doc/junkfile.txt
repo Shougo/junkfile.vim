@@ -67,8 +67,9 @@ junkfile#open_immediately({filename})		*junkfile#open_immediately()*
 ------------------------------------------------------------------------------
 COMMANDS 					*junkfile-commands*
 
-:JunkfileOpen
+:JunkfileOpen [{postfix}]
 		Creates new junk file.
+		If {postfix} is given, it will open junk file immediately.
 
 ------------------------------------------------------------------------------
 VARIABLES 					*junkfile-variables*

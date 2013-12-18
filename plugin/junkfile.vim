@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: junkfile.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 16 Feb 2013.
+" Last Modified: 18 Dec 2013.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -31,7 +31,8 @@ endif
 let s:save_cpo = &cpo
 set cpo&vim
 
-command! -nargs=0 JunkfileOpen call junkfile#open(strftime('%Y-%m-%d-%H%M%S.'))
+command! -nargs=? JunkfileOpen call junkfile#open(
+      \ strftime('%Y-%m-%d-%H%M%S.'), <q-args>)
 
 let g:loaded_junkfile = 1
 
