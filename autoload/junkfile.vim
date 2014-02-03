@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: junkfile.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu at gmail.com>
-" Last Modified: 18 Dec 2013.
+" Last Modified: 03 Feb 2014.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -29,7 +29,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 let g:junkfile#directory =
-      \ get(g:, 'junkfile#directory', $HOME . '/.vim_junk')
+      \ get(g:, 'junkfile#directory', $HOME . '/.cache/junkfile')
 let g:junkfile#edit_command =
       \ get(g:, 'junkfile#edit_command', 'edit')
 

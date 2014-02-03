@@ -77,7 +77,7 @@ VARIABLES 					*junkfile-variables*
 g:junkfile#directory				*g:junkfile#directory*
 		Specifies the directory where |junkfile| writes junk files.
 
-		Defaults to "~/.vim_junk".
+		Defaults to "~/.cache/junkfile".
 
 g:junkfile#edit_command				*g:junkfile#edit_command*
 		Specifies buffer open command when |:JunkfileOpen|.
