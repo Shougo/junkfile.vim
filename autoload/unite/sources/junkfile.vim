@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: junkfile.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 23 Mar 2013.
+" Last Modified: 10 Feb 2014.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -53,6 +53,7 @@ endfunction"}}}
 let s:source_junkfile_new = {
       \ 'name' : 'junkfile/new',
       \ 'description' : 'new candidates in junkfile',
+      \ 'action_table' : {},
       \ }
 
 function! s:source_junkfile_new.change_candidates(args, context) "{{{
@@ -84,13 +85,24 @@ let s:source_junkfile.action_table.delete = {
       \ 'is_invalidate_cache' : 1,
       \ 'is_selectable' : 1,
       \}
-function! s:source_junkfile.action_table.delete.func(candidates)
+function! s:source_junkfile.action_table.delete.func(candidates) "{{{
   if unite#util#input_yesno('Really force delete files?')
     for candidate in a:candidates
       call delete(candidate.action__path)
     endfor
   endif
-endfunction
+endfunction"}}}
+
+let s:source_junkfile.action_table.unite__new_candidate = {
+      \ 'description' : 'create a new junkfile',
+      \ 'is_listed' : 0,
+      \}
+function! s:source_junkfile.action_table.unite__new_candidate.func(candidate) "{{{
+  call junkfile#open(strftime('%Y-%m-%d-%H%M%S.'))
+endfunction"}}}
+
+let s:source_junkfile_new.action_table.unite__new_candidate =
+      \ deepcopy(s:source_junkfile.action_table.unite__new_candidate)
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
