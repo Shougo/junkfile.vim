@@ -28,7 +28,9 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 let g:junkfile#directory =
-      \ get(g:, 'junkfile#directory', $HOME . '/.cache/junkfile')
+      \ get(g:, 'junkfile#directory',
+      \  expand($XDG_CACHE_HOME != '' ?
+      \   $XDG_CACHE_HOME . '/junkfile' : '~/.cache/junkfile'))
 let g:junkfile#edit_command =
       \ get(g:, 'junkfile#edit_command', 'edit')
 
