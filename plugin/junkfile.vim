@@ -8,7 +8,7 @@ if exists('g:loaded_junkfile')
   finish
 endif
 
-command! -nargs=? JunkfileOpen call junkfile#open(
+command! -range -nargs=? JunkfileOpen <line1>,<line2>call junkfile#open(
       \ strftime('%Y-%m-%d-%H%M%S.'), <q-args>)
 
 let g:loaded_junkfile = 1
