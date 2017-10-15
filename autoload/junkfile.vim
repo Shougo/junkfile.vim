@@ -14,14 +14,29 @@ let g:junkfile#edit_command =
 function! junkfile#init() abort
 endfunction
 
-function! junkfile#open(prefix, ...) abort
+function! junkfile#open(prefix, ...) range abort
+  let use_range = a:lastline - a:firstline > 0
+  if use_range
+    let saved_lines = getline(a:firstline, a:lastline)
+  endif
+
   let postfix = get(a:000, 0, '')
+  let postfix_candidate = !use_range || postfix != '' ?
+        \ '' : expand('%:e')
   let filename = postfix == '' ?
-        \ input('Junk Code: ', a:prefix) : a:prefix . postfix
+        \ input('Junk Code: ', a:prefix . postfix_candidate) : a:prefix . postfix
 
   if filename != ''
     call junkfile#_open(filename)
   endif
+
+  if use_range
+    call append(0, saved_lines)
+    "not sure why but an extra blank line seems to always be added
+    silent! normal "_dd
+    write
+  endif
+
 endfunction
 
 function! junkfile#open_immediately(filename) abort
