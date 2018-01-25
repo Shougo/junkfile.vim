@@ -6,6 +6,7 @@
 
 from .base import Base
 from time import strftime
+from denite.util import expand
 import os
 
 
@@ -19,7 +20,7 @@ class Source(Base):
 
     def gather_candidates(self, context):
         self.vim.call('junkfile#init')
-        base = self.vim.vars['junkfile#directory']
+        base = expand(self.vim.vars['junkfile#directory'])
 
         candidates = []
         if context['args'] and context['args'][0] == 'new':
