@@ -4,10 +4,10 @@
 " License: MIT license
 "=============================================================================
 
+let s:default_directory = expand(($XDG_CACHE_HOME != '' ?
+      \   $XDG_CACHE_HOME . '/junkfile' : '~/.cache/junkfile'), 1)
 let g:junkfile#directory =
-      \ get(g:, 'junkfile#directory',
-      \  expand($XDG_CACHE_HOME != '' ?
-      \   $XDG_CACHE_HOME . '/junkfile' : '~/.cache/junkfile'))
+      \ get(g:, 'junkfile#directory', s:default_directory)
 let g:junkfile#edit_command =
       \ get(g:, 'junkfile#edit_command', 'edit')
 
