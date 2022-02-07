@@ -13,8 +13,9 @@ Interface		|junkfile-interface|
   Commands		  |junkfile-commands|
   Variables		  |junkfile-variables|
 Configulation Examples	|junkfile-examples|
-Unite sources		|junkfile-unite-sources|
+Ddu sources		|junkfile-ddu-sources|
 Denite sources		|junkfile-denite-sources|
+Unite sources		|junkfile-unite-sources|
 Changelog		|junkfile-changelog|
 
 ==============================================================================
@@ -77,6 +78,21 @@ EXAMPLES					*junkfile-examples*
 	\ strftime('%Y-%m-%d.md'))
 <
 ==============================================================================
+DDU SOURCES					*junkfile-ddu-sources*
+
+					*junkfile-ddu-source-junkfile*
+junkfile
+		Nominates junk files as a candidate.
+
+==============================================================================
+DENITE SOURCES					*junkfile-denite-sources*
+
+					*junkfile-denite-source-junkfile*
+junkfile
+		Nominates junk files as a candidate.
+		If the args 0 is "new", it will create new junk file.
+
+==============================================================================
 UNITE SOURCES					*junkfile-unite-sources*
 
 Here let me explain about a source for |unite| provided in junkfile.
@@ -94,14 +110,6 @@ junkfile/new
 Actions of each sources
 junkfile				*unite-action-source-junkfile*
 	delete		Delete junk files
-
-==============================================================================
-DENITE SOURCES					*junkfile-denite-sources*
-
-					*junkfile-denite-source-junkfile*
-junkfile
-		Nominates junk files as a candidate.
-		If the args 0 is "new", it will create new junk file.
 
 ==============================================================================
 CHANGELOG					*junkfile-changelog*
