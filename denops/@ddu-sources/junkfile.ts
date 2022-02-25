@@ -58,7 +58,8 @@ export class Source extends BaseSource<Params> {
             path: join(dir, newFilename),
           },
         }];
-        items = items.concat(await tree(dir));
+        items = items.concat((await tree(dir)).sort(
+          (a, b) => a.word < b.word ? 1 : a.word == b.word ? 0 : -1));
 
         controller.enqueue(items);
 
