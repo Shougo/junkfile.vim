@@ -31,7 +31,7 @@ Create junk file:
 >
 	:JunkfileOpen
 <
-Note: To use the unite.vim interface, run this command (requires |unite.vim|):
+Note: To use the unite.vim interface, run this command (requires "unite.vim"):
 >
 	:Unite junkfile/new junkfile -start-insert
 <
@@ -51,6 +51,7 @@ junkfile#open_immediately({filename})		*junkfile#open_immediately()*
 ------------------------------------------------------------------------------
 COMMANDS 					*junkfile-commands*
 
+						*:JunkfileOpen*
 :JunkfileOpen [{postfix}]
 		Creates new junk file.
 		If {postfix} is given, it will open junk file immediately.
@@ -95,7 +96,7 @@ junkfile
 ==============================================================================
 UNITE SOURCES					*junkfile-unite-sources*
 
-Here let me explain about a source for |unite| provided in junkfile.
+Here let me explain about a source for "unite.vim" provided in junkfile.
 
 					*junkfile-unite-source-junkfile*
 junkfile
