@@ -10,7 +10,6 @@ Introduction		|junkfile-introduction|
 Usage			|junkfile-usage|
 Interface		|junkfile-interface|
   Functions		  |junkfile-functions|
-  Commands		  |junkfile-commands|
   Variables		  |junkfile-variables|
 Configulation Examples	|junkfile-examples|
 Ddu sources		|junkfile-ddu-sources|
@@ -29,12 +28,9 @@ USAGE						*junkfile-usage*
 
 Create junk file:
 >
-	:JunkfileOpen
+	:call junkfile#open(strftime('%Y-%m-%d-%H%M%S.'))
 <
-Note: To use the unite.vim interface, run this command (requires "unite.vim"):
->
-	:Unite junkfile/new junkfile -start-insert
-<
+
 ==============================================================================
 INTERFACE					*junkfile-interface*
 
@@ -47,14 +43,6 @@ junkfile#open({prefix})				*junkfile#open()*
 junkfile#open_immediately({filename})		*junkfile#open_immediately()*
 		Open {filename} junk file immediately.
 		It is useful to edit memo or diary file.
-
-------------------------------------------------------------------------------
-COMMANDS 					*junkfile-commands*
-
-						*:JunkfileOpen*
-:JunkfileOpen [{postfix}]
-		Creates new junk file.
-		If {postfix} is given, it will open junk file immediately.
 
 ------------------------------------------------------------------------------
 VARIABLES 					*junkfile-variables*
@@ -114,6 +102,9 @@ junkfile				*unite-action-source-junkfile*
 
 ==============================================================================
 CHANGELOG					*junkfile-changelog*
+
+2023-12-07
+- Remove command.
 
 2013-03-23
 - Added delete action.
