@@ -4,7 +4,7 @@ Version: 1.0
 Author : Shougo <Shougo.Matsu at gmail.com>
 License: MIT license
 
-CONTENTS					*junkfile-contents*
+CONTENTS                                                   *junkfile-contents*
 
 Introduction		|junkfile-introduction|
 Usage			|junkfile-usage|
@@ -18,13 +18,13 @@ Unite sources		|junkfile-unite-sources|
 Changelog		|junkfile-changelog|
 
 ==============================================================================
-INTRODUCTION					*junkfile-introduction*
+INTRODUCTION                                           *junkfile-introduction*
 
 *junkfile* creates junk files. Instead of other scratch plugins, it can create
 files with filetype.
 
 ==============================================================================
-USAGE						*junkfile-usage*
+USAGE                                                         *junkfile-usage*
 
 Create junk file:
 >
@@ -32,33 +32,33 @@ Create junk file:
 <
 
 ==============================================================================
-INTERFACE					*junkfile-interface*
+INTERFACE                                                 *junkfile-interface*
 
 ------------------------------------------------------------------------------
-FUNCTIONS 					*junkfile-functions*
+FUNCTIONS                                                 *junkfile-functions*
 
-junkfile#open({prefix})				*junkfile#open()*
+junkfile#open({prefix})                                      *junkfile#open()*
 		Open {prefix} junk file.
 
-junkfile#open_immediately({filename})		*junkfile#open_immediately()*
+junkfile#open_immediately({filename})            *junkfile#open_immediately()*
 		Open {filename} junk file immediately.
 		It is useful to edit memo or diary file.
 
 ------------------------------------------------------------------------------
-VARIABLES 					*junkfile-variables*
+VARIABLES                                                 *junkfile-variables*
 
-g:junkfile#directory				*g:junkfile#directory*
+g:junkfile#directory                                    *g:junkfile#directory*
 		Specifies the directory where |junkfile| writes junk files.
 
 		Defaults to "~/.cache/junkfile".
 
-g:junkfile#edit_command				*g:junkfile#edit_command*
+g:junkfile#edit_command                              *g:junkfile#edit_command*
 		Specifies buffer open command when |:JunkfileOpen|.
 
 		Defaults to "edit".
 
 ==============================================================================
-EXAMPLES					*junkfile-examples*
+EXAMPLES                                                   *junkfile-examples*
 
 >
 	command! -nargs=0 JunkfileDay call junkfile#open_immediately(
@@ -67,41 +67,38 @@ EXAMPLES					*junkfile-examples*
 	\ strftime('%Y-%m-%d.md'))
 <
 ==============================================================================
-DDU SOURCES					*junkfile-ddu-sources*
+DDU SOURCES                                             *junkfile-ddu-sources*
 
-					*junkfile-ddu-source-junkfile*
-junkfile
+junkfile                                        *junkfile-ddu-source-junkfile*
 		Nominates junk files as a candidate.
 
 ==============================================================================
-DENITE SOURCES					*junkfile-denite-sources*
+DENITE SOURCES                                       *junkfile-denite-sources*
 
-					*junkfile-denite-source-junkfile*
-junkfile
+junkfile                                     *junkfile-denite-source-junkfile*
 		Nominates junk files as a candidate.
 		If the args 0 is "new", it will create new junk file.
 
 ==============================================================================
-UNITE SOURCES					*junkfile-unite-sources*
+UNITE SOURCES                                         *junkfile-unite-sources*
 
 Here let me explain about a source for "unite.vim" provided in junkfile.
 
-					*junkfile-unite-source-junkfile*
-junkfile
+junkfile                                      *junkfile-unite-source-junkfile*
 		Nominates junk files as a candidate.
 
-					*junkfile-unite-source-junkfile/new*
-junkfile/new
+junkfile/new                              *junkfile-unite-source-junkfile/new*
 		Create new junk file.
 >
 		:Unite -start-insert junkfile/new junk/file
 <
+
 Actions of each sources
-junkfile				*unite-action-source-junkfile*
+junkfile                                        *unite-action-source-junkfile*
 	delete		Delete junk files
 
 ==============================================================================
-CHANGELOG					*junkfile-changelog*
+CHANGELOG                                                 *junkfile-changelog*
 
 2023-12-07
 - Remove command.
