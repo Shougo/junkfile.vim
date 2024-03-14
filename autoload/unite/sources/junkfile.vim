@@ -1,10 +1,4 @@
-"=============================================================================
-" FILE: junkfile.vim
-" AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" License: MIT license
-"=============================================================================
-
-function! unite#sources#junkfile#define() abort
+function unite#sources#junkfile#define() abort
   return [s:source_junkfile, s:source_junkfile_new]
 endfunction
 
@@ -15,7 +9,7 @@ let s:source_junkfile = {
       \ 'action_table' : {},
       \ }
 
-function! s:source_junkfile.gather_candidates(args, context) abort
+function s:source_junkfile.gather_candidates(args, context) abort
   let _ = map(filter(split(glob(g:junkfile#directory . '/**'), '\n'),
         \  'filereadable(v:val)'), "{
         \ 'word' : fnamemodify(v:val, ':t'),
@@ -33,7 +27,7 @@ let s:source_junkfile_new = {
       \ 'action_table' : {},
       \ }
 
-function! s:source_junkfile_new.change_candidates(args, context) abort
+function s:source_junkfile_new.change_candidates(args, context) abort
   let junk_dir = g:junkfile#directory . strftime('/%Y/%m')
   if !isdirectory(junk_dir)
     call mkdir(junk_dir, 'p')
@@ -74,7 +68,7 @@ let s:source_junkfile.action_table.unite__new_candidate = {
       \ 'description' : 'create a new junkfile',
       \ 'is_listed' : 0,
       \}
-function! s:source_junkfile.action_table.unite__new_candidate.func(candidate) abort
+function s:source_junkfile.action_table.unite__new_candidate.func(candidate) abort
   call junkfile#open(strftime('%Y-%m-%d-%H%M%S.'))
 endfunction
 

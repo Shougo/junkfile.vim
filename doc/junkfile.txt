@@ -7,6 +7,7 @@ License: MIT license
 CONTENTS                                                   *junkfile-contents*
 
 Introduction		|junkfile-introduction|
+Install			|junkfile-install|
 Usage			|junkfile-usage|
 Interface		|junkfile-interface|
   Functions		  |junkfile-functions|
@@ -24,11 +25,18 @@ INTRODUCTION                                           *junkfile-introduction*
 files with filetype.
 
 ==============================================================================
+INSTALL                                                     *junkfile-install*
+
+NOTE: junkfile.vim requires Neovim (0.8.0+) or Vim 9.0.1276+ (latest is
+recommended).
+
+
+==============================================================================
 USAGE                                                         *junkfile-usage*
 
 Create junk file:
 >
-	:call junkfile#open(strftime('%Y-%m-%d-%H%M%S.'))
+	:call junkfile#open('%Y-%m-%d-%H%M%S.'->strftime())
 <
 
 ==============================================================================
@@ -62,9 +70,9 @@ EXAMPLES                                                   *junkfile-examples*
 
 >
 	command! -nargs=0 JunkfileDay call junkfile#open_immediately(
-	\ strftime('%Y-%m-%d.txt'))
+	\ '%Y-%m-%d.txt'->strftime())
 	command! -nargs=0 JunkfileDiary call junkfile#open_immediately(
-	\ strftime('%Y-%m-%d.md'))
+	\ '%Y-%m-%d.md'->strftime())
 <
 ==============================================================================
 DDU SOURCES                                             *junkfile-ddu-sources*
@@ -99,6 +107,9 @@ junkfile                                        *unite-action-source-junkfile*
 
 ==============================================================================
 CHANGELOG                                                 *junkfile-changelog*
+
+2024-03-14
+- Requires neovim 0.8.0 and Vim 9.0.1276+.
 
 2023-12-07
 - Remove command.
