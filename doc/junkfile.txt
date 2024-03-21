@@ -1,6 +1,6 @@
 *junkfile.txt*	Create temporary file
 
-Version: 1.0
+Version: 2.0
 Author : Shougo <Shougo.Matsu at gmail.com>
 License: MIT license
 
@@ -14,8 +14,6 @@ Interface		|junkfile-interface|
   Variables		  |junkfile-variables|
 Configulation Examples	|junkfile-examples|
 Ddu sources		|junkfile-ddu-sources|
-Denite sources		|junkfile-denite-sources|
-Unite sources		|junkfile-unite-sources|
 Changelog		|junkfile-changelog|
 
 ==============================================================================
@@ -81,32 +79,10 @@ junkfile                                        *junkfile-ddu-source-junkfile*
 		Nominates junk files as a candidate.
 
 ==============================================================================
-DENITE SOURCES                                       *junkfile-denite-sources*
-
-junkfile                                     *junkfile-denite-source-junkfile*
-		Nominates junk files as a candidate.
-		If the args 0 is "new", it will create new junk file.
-
-==============================================================================
-UNITE SOURCES                                         *junkfile-unite-sources*
-
-Here let me explain about a source for "unite.vim" provided in junkfile.
-
-junkfile                                      *junkfile-unite-source-junkfile*
-		Nominates junk files as a candidate.
-
-junkfile/new                              *junkfile-unite-source-junkfile/new*
-		Create new junk file.
->
-		:Unite -start-insert junkfile/new junk/file
-<
-
-Actions of each sources
-junkfile                                        *unite-action-source-junkfile*
-	delete		Delete junk files
-
-==============================================================================
 CHANGELOG                                                 *junkfile-changelog*
+
+2024-03-21
+- Remove both unite and denite sources.
 
 2024-03-14
 - Requires neovim 0.8.0 and Vim 9.0.1276+.
