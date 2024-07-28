@@ -59,7 +59,7 @@ g:junkfile#directory                                    *g:junkfile#directory*
 		Defaults to "~/.cache/junkfile".
 
 g:junkfile#edit_command                              *g:junkfile#edit_command*
-		Specifies buffer open command when |:JunkfileOpen|.
+		Specifies buffer open command when |junkfile#open()|.
 
 		Defaults to "edit".
 
