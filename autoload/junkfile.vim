@@ -5,7 +5,12 @@ let g:junkfile#directory =
 let g:junkfile#edit_command =
       \ g:->get('junkfile#edit_command', 'edit')
 
-function junkfile#init() abort
+function junkfile#init(filename='') abort
+  const filename = g:junkfile#directory .. '/%Y/%m/'->strftime() .. a:filename
+  const junk_dir = filename->fnamemodify(':h')
+  if !junk_dir->isdirectory()
+    call mkdir(junk_dir, 'p')
+  endif
 endfunction
 
 function junkfile#open(prefix, ...) range abort
@@ -32,19 +37,18 @@ function junkfile#open(prefix, ...) range abort
 
     write
   endif
-
 endfunction
 
 function junkfile#open_immediately(filename) abort
   call junkfile#_open(a:filename)
 endfunction
 
-function junkfile#_open(filename) abort
-  let filename = g:junkfile#directory .. '/%Y/%m/'->strftime() .. a:filename
-  let junk_dir = filename->fnamemodify(':h')
-  if !junk_dir->isdirectory()
-    call mkdir(junk_dir, 'p')
-  endif
+function junkfile#_filename(filename) abort
+  return g:junkfile#directory .. '/%Y/%m/'->strftime() .. a:filename
+endfunction
 
-  execute g:junkfile#edit_command filename->fnameescape()
+function junkfile#_open(filename) abort
+  call junkfile#init()
+  execute g:junkfile#edit_command
+        \ a:filename->junkfile#_filename()->fnameescape()
 endfunction
