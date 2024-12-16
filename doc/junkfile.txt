@@ -33,7 +33,7 @@ recommended).
 USAGE                                                         *junkfile-usage*
 
 Create junk file:
->
+>vim
 	:call junkfile#open('%Y-%m-%d-%H%M%S.'->strftime())
 <
 
@@ -66,7 +66,7 @@ g:junkfile#edit_command                              *g:junkfile#edit_command*
 ==============================================================================
 EXAMPLES                                                   *junkfile-examples*
 
->
+>vim
 	command! -nargs=0 JunkfileDay call junkfile#open_immediately(
 	\ '%Y-%m-%d.txt'->strftime())
 	command! -nargs=0 JunkfileDiary call junkfile#open_immediately(
