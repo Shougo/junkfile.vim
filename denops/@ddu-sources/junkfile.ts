@@ -1,14 +1,14 @@
-import { type Item } from "jsr:@shougo/ddu-vim@~6.4.0/types";
-import { BaseSource } from "jsr:@shougo/ddu-vim@~6.4.0/source";
+import { type Item } from "jsr:@shougo/ddu-vim@~10.4.0/types";
+import { BaseSource } from "jsr:@shougo/ddu-vim@~10.4.0/source";
 import { type ActionData } from "jsr:@shougo/ddu-kind-file@~0.9.0";
 
-import type { Denops } from "jsr:@denops/std@~7.3.0";
-import * as vars from "jsr:@denops/std@~7.3.0/variable";
-import * as fn from "jsr:@denops/std@~7.3.0/function";
+import type { Denops } from "jsr:@denops/std@~7.6.0";
+import * as vars from "jsr:@denops/std@~7.6.0/variable";
+import * as fn from "jsr:@denops/std@~7.6.0/function";
 
-import { join } from "jsr:@std/path@~1.0.3/join";
-import { basename } from "jsr:@std/path@~1.0.2/basename";
-import { relative } from "jsr:@std/path@~1.0.2/relative";
+import { join } from "jsr:@std/path@~1.1.0/join";
+import { basename } from "jsr:@std/path@~1.1.0/basename";
+import { relative } from "jsr:@std/path@~1.1.0/relative";
 
 type Params = Record<string, never>;
 
