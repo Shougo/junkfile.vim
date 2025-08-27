@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@denops/std": "jsr:@denops/std@~8.0.0",
+    "@shougo/ddu-kind-file": "jsr:@shougo/ddu-kind-file@~0.9.0",
+    "@shougo/ddu-vim": "jsr:@shougo/ddu-vim@~11.0.0",
+    "@std/path": "jsr:@std/path@~1.1.0"
+  }
+}
