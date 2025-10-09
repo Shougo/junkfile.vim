@@ -12,7 +12,7 @@ Usage			|junkfile-usage|
 Interface		|junkfile-interface|
   Functions		  |junkfile-functions|
   Variables		  |junkfile-variables|
-Configulation Examples	|junkfile-examples|
+Examples		|junkfile-examples|
 Ddu sources		|junkfile-ddu-sources|
 Changelog		|junkfile-changelog|
 
@@ -76,7 +76,7 @@ EXAMPLES                                                   *junkfile-examples*
 DDU SOURCES                                             *junkfile-ddu-sources*
 
 junkfile                                        *junkfile-ddu-source-junkfile*
-		Nominates junk files as a candidate.
+		Nominates junk files.
 
 ==============================================================================
 CHANGELOG                                                 *junkfile-changelog*
