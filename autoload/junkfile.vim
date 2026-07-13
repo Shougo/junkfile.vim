@@ -15,14 +15,20 @@ endfunction
 
 function junkfile#open(prefix, ...) range abort
   const use_range = a:lastline - a:firstline > 0
+  let saved_lines = []
+
   if use_range
     let saved_lines = a:firstline->getline(a:lastline)
   endif
 
   const postfix = a:000->get(0, '')
-  let postfix_candidate = !use_range || postfix != '' ? '' : '%:e'->expand()
-  let filename = postfix == ''
-        \ ? 'Junk Code: '->input(a:prefix .. postfix_candidate)
+  let postfix_candidate = ''
+  if !use_range && postfix == ''
+    let postfix_candidate = '%:e'->expand()
+  endif
+
+  const filename = postfix == ''
+        \ ? input('Junk Code: ', a:prefix .. postfix_candidate)
         \ : a:prefix .. postfix
 
   if filename !=# ''
@@ -34,7 +40,6 @@ function junkfile#open(prefix, ...) range abort
     " NOTE: not sure why but an extra blank line seems to always be added
     silent! normal "_dd
     call deletebufline(bufnr(), '.'->line())
-
     write
   endif
 endfunction

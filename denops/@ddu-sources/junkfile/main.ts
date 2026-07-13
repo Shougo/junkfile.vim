@@ -29,49 +29,50 @@ export class Source extends BaseSource<Params> {
           await vars.g.get(args.denops, "junkfile#directory"),
         ) as string;
 
-        const tree = async (root: string) => {
-          let items: Item<ActionData>[] = [];
+        const collectItems = async (
+          root: string,
+        ): Promise<Item<ActionData>[]> => {
+          const items: Item<ActionData>[] = [];
 
           for await (const entry of Deno.readDir(root)) {
             const path = join(root, entry.name);
-            if (!entry.isDirectory) {
-              items.push({
-                word: relative(dir, path),
-                action: {
-                  path: path,
-                },
-              });
-            }
 
             if (entry.isDirectory) {
-              items = [...items, ...await tree(path)];
+              items.push(...await collectItems(path));
+              continue;
             }
+
+            items.push({
+              word: relative(dir, path),
+              action: {
+                path,
+              },
+            });
           }
 
           return items;
         };
 
-        const newFilename = (await fn.strftime(
+        const newFilename = `${await fn.strftime(
           args.denops,
           "%Y/%m/%Y-%m-%d-%H%M%S.",
-        )) + args.input;
+        )}${args.input}`;
+        const newBasename = basename(newFilename);
 
-        let items: Item<ActionData>[] = [{
-          word: basename(newFilename),
-          display: `[new] ${basename(newFilename)}`,
-          action: {
-            path: join(dir, newFilename),
+        const items: Item<ActionData>[] = [
+          {
+            word: newBasename,
+            display: `[new] ${newBasename}`,
+            action: {
+              path: join(dir, newFilename),
+            },
           },
-        }];
-        items = [
-          ...items,
-          ...(await tree(dir)).sort(
-            (a, b) => a.word < b.word ? 1 : a.word == b.word ? 0 : -1,
+          ...(await collectItems(dir)).sort((a, b) =>
+            b.word.localeCompare(a.word)
           ),
         ];
 
         controller.enqueue(items);
-
         controller.close();
       },
     });
