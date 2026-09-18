@@ -1,7 +1,7 @@
 *junkfile.txt*	Create temporary file
 
 Version: 2.0
-Author : Shougo <Shougo.Matsu at gmail.com>
+Author: Shougo <Shougo.Matsu at gmail.com>
 License: MIT license
 
 CONTENTS                                                   *junkfile-contents*
@@ -19,8 +19,7 @@ Changelog		|junkfile-changelog|
 ==============================================================================
 INTRODUCTION                                           *junkfile-introduction*
 
-*junkfile* creates junk files. Instead of other scratch plugins, it can create
-files with filetype.
+*junkfile* creates temporary files with a filetype.
 
 Junk files are stored below a date-based directory:
 	{directory}/%Y/%m/{filename}.
@@ -59,6 +58,8 @@ junkfile#open_immediately({filename})            *junkfile#open_immediately()*
 		Open the junk file immediately without prompting.
 		{filename} is appended to the current
 		{directory}/%Y/%m/ directory.
+		It is useful for editing memo or diary files stored in the
+		current year and month directory.
 
 ------------------------------------------------------------------------------
 VARIABLES                                                 *junkfile-variables*
@@ -89,25 +90,28 @@ EXAMPLES                                                   *junkfile-examples*
 DDU SOURCES                                             *junkfile-ddu-sources*
 
 junkfile                                        *junkfile-ddu-source-junkfile*
-		Nominates junk files.
+		Lists junk files below |g:junkfile#directory|.
+
+		It also provides a candidate for creating a new junk file
+		based on the current input.
 
 ==============================================================================
 CHANGELOG                                                 *junkfile-changelog*
 
-2024-03-21
+2024.03.21
 - Remove both unite and denite sources.
 
-2024-03-14
+2024.03.14
 - Requires neovim 0.8.0 and Vim 9.0.1276+.
 
-2023-12-07
+2023.12.07
 - Remove command.
 
-2013-03-23
+2013.03.23
 - Added delete action.
 - Improved sort.
 
-2013-02-16
+2013.02.16
 - Initial version.
 - Added junkfile#open_immediately().
 
