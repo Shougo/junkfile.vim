@@ -22,6 +22,9 @@ INTRODUCTION                                           *junkfile-introduction*
 *junkfile* creates junk files. Instead of other scratch plugins, it can create
 files with filetype.
 
+Junk files are stored below a date-based directory:
+	{directory}/%Y/%m/{filename}.
+
 ==============================================================================
 INSTALL                                                     *junkfile-install*
 
@@ -43,8 +46,12 @@ INTERFACE                                                 *junkfile-interface*
 ------------------------------------------------------------------------------
 FUNCTIONS                                                 *junkfile-functions*
 
-junkfile#open({prefix})                                      *junkfile#open()*
-		Open {prefix} junk file.
+junkfile#open({prefix} [, {postfix}])
+		Prompt for a junk file name using {prefix} as the initial
+		text, then open the junk file.
+
+		If {postfix} is specified, open the file named
+		{prefix} .. {postfix} without prompting.
 
 junkfile#open_immediately({filename})            *junkfile#open_immediately()*
 		Open {filename} junk file immediately.
@@ -56,7 +63,9 @@ VARIABLES                                                 *junkfile-variables*
 g:junkfile#directory                                    *g:junkfile#directory*
 		Specifies the directory where |junkfile| writes junk files.
 
-		Defaults to "~/.cache/junkfile".
+		Default:
+		"$XDG_CACHE_HOME/junkfile" when $XDG_CACHE_HOME is set
+		"~/.cache/junkfile" otherwise.
 
 g:junkfile#edit_command                              *g:junkfile#edit_command*
 		Specifies buffer open command when |junkfile#open()|.
