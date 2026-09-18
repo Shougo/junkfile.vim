@@ -52,10 +52,13 @@ junkfile#open({prefix} [, {postfix}])
 
 		If {postfix} is specified, open the file named
 		{prefix} .. {postfix} without prompting.
+		When called with a range, the selected lines are written to
+		the created junk file.
 
 junkfile#open_immediately({filename})            *junkfile#open_immediately()*
-		Open {filename} junk file immediately.
-		It is useful to edit memo or diary file.
+		Open the junk file immediately without prompting.
+		{filename} is appended to the current
+		{directory}/%Y/%m/ directory.
 
 ------------------------------------------------------------------------------
 VARIABLES                                                 *junkfile-variables*
@@ -68,9 +71,10 @@ g:junkfile#directory                                    *g:junkfile#directory*
 		"~/.cache/junkfile" otherwise.
 
 g:junkfile#edit_command                              *g:junkfile#edit_command*
-		Specifies buffer open command when |junkfile#open()|.
+		Specifies the Ex command used to open junk files.
+		It is also used by |junkfile#open_immediately()|.
 
-		Defaults to "edit".
+		Default: "edit"
 
 ==============================================================================
 EXAMPLES                                                   *junkfile-examples*
