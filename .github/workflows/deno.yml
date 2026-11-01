@@ -1,0 +1,29 @@
+name: deno
+
+# The source of ddu.vim (denops/@ddu-sources/junkfile).
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  DENO_VERSION: 2.x
+
+jobs:
+  deno-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: denoland/setup-deno@v2.0.5
+        with:
+          deno-version: ${{ env.DENO_VERSION }}
+      - name: Check Type
+        run: deno task check
+      - name: Check Lint
+        run: deno task lint
+      - name: Check Format
+        run: deno task fmt --check

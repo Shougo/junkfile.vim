@@ -1,0 +1,40 @@
+name: go
+
+# The source of goda-fi.vim (ext/source/junkfile).
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.os }} go ${{ matrix.go }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        go: [stable]
+        include:
+          # The oldest Go the module supports.
+          - os: ubuntu-latest
+            go: '1.26'
+    defaults:
+      run:
+        shell: bash
+    steps:
+      # Keep the line endings of the repository.
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version: ${{ matrix.go }}
+      - run: go version
+      - if: runner.os == 'Linux'
+        run: gofmt -l . | tee /dev/stderr | (! read)
+      - run: go vet ./...
+      - run: go test ./...

@@ -1,0 +1,43 @@
+# Dependabot: updates of the Go modules, of the Deno dependencies and of the
+# GitHub Actions, once a week, of releases at least 7 days old (time for a
+# broken or malicious release to be found), each in one pull request.
+version: 2
+updates:
+  - package-ecosystem: gomod
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+      # Our own modules (goda-fi.vim, goda.vim): at once.
+      exclude:
+        - github.com/Shougo/*
+    groups:
+      gomod:
+        patterns:
+          - "*"
+  - package-ecosystem: deno
+    directories:
+      - "/"
+      - "/denops/@ddu-sources/junkfile"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+      # Our own packages: at once.
+      exclude:
+        - "@shougo/*"
+    groups:
+      deno:
+        patterns:
+          - "*"
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns:
+          - "*"
