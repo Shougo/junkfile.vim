@@ -14,6 +14,7 @@ Interface		|junkfile-interface|
   Variables		  |junkfile-variables|
 Examples		|junkfile-examples|
 Ddu sources		|junkfile-ddu-sources|
+Goda-fi sources		|junkfile-goda-fi-sources|
 Changelog		|junkfile-changelog|
 
 ==============================================================================
@@ -96,7 +97,30 @@ junkfile                                        *junkfile-ddu-source-junkfile*
 		based on the current input.
 
 ==============================================================================
+GODA-FI SOURCES                                     *junkfile-goda-fi-sources*
+
+junkfile                                    *junkfile-goda-fi-source-junkfile*
+		The same as |junkfile-ddu-source-junkfile|, for goda-fi.vim
+		(https://github.com/Shougo/goda-fi.vim): a Go package to add
+		to your configuration of goda-fi.vim.
+>go
+	import "github.com/Shougo/junkfile.vim/ext/source/junkfile"
+
+	b.AddSource(junkfile.New())
+<
+		The candidate of a new junk file follows the input when the
+		source is volatile:
+>vim
+	call goda_fi#start(#{
+	      \   sources: [#{ name: 'junkfile',
+	      \     options: #{ volatile: v:true } }],
+	      \ })
+<
+==============================================================================
 CHANGELOG                                                 *junkfile-changelog*
+
+2026.11.01
+- Add goda-fi source.
 
 2024.03.21
 - Remove both unite and denite sources.
