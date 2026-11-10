@@ -18,7 +18,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Shougo/goda-fi.vim/ext/kind/file"
+	"github.com/Shougo/goda-fi-ext/ext/kind/file"
 	"github.com/Shougo/goda-fi.vim/fi"
 	"github.com/Shougo/goda.vim/sdk"
 )
